@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace ProyectoLoginMVC.Models;
+﻿namespace ProyectoLoginMVC.Models;
 
 public partial class Usuario
 {

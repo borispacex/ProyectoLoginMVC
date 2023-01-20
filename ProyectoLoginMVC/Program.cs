@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProyectoLoginMVC.Models;
 using ProyectoLoginMVC.Services.Contrato;
@@ -24,6 +25,17 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 {
     options.LoginPath = "/Inicio/IniciarSesion";
     options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+});
+
+// limpiar cache
+builder.Services.AddControllersWithViews(options => {
+    options.Filters.Add(
+        new ResponseCacheAttribute
+        {
+            NoStore = true,
+            Location = ResponseCacheLocation.None
+        }
+    );
 });
 
 var app = builder.Build();
